@@ -46,6 +46,7 @@ module.exports = {
       caption: ['string'],
       tag_users: ['string'],
       place_id: ['string'],
+	  title_color: ['string']
     }).validateSync(req.allParams());
     var uploadDir = '/uploads/media';
 
@@ -74,9 +75,18 @@ module.exports = {
         }
 
         // Only process 1 image per upload
-        var uploadedFile = uploadFiles[0];
+        
+		/*var uploadedFiles = uploadFiles;
         logger.info('MediaController::createOne uploadedFile=' + util.inspect(uploadedFile));
         params.file_url = process.env.APP_ENDPOINT + uploadDir + '/' + path.basename(uploadedFile.fd);
+		*/
+		var a=[];
+		for(var i=0; i< uploadFiles.length; i++){
+			var file_url = process.env.APP_ENDPOINT + uploadDir + '/' + path.basename(uploadFiles[i].fd);
+			a.push(file_url);
+		};
+		params.file_url = a;
+		
         MediaService.createMedia(req.user.id, params, next);
       }],
     }, function(err, ret) {
@@ -95,6 +105,7 @@ module.exports = {
       tag_users: ['string'],
       place_id: ['string'],
       is_comment_off: ['string'],
+	  title_color : ['string']
     }).validateSync(req.allParams());
 
     if (err) {

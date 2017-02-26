@@ -27,7 +27,7 @@ module.exports = {
       type: 'json',
     },
     file_url: {
-      type:'string',
+      type:'array',
       required: true
     },
     is_comment_off:{
@@ -38,6 +38,10 @@ module.exports = {
     tag_users: {
       type: 'array',
       required: false,
-    }
+    },
+	title_color:{
+		type:'string',
+		defaultsTo: '#33ccff'
+	},
   }
 };
