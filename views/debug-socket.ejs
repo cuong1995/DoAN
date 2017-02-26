@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <title>Exclusiv socket debug</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/dependencies/sails.io.js"></script>
+    <script src="js/dependencies/jquery-1.11.1.js"></script>
+    <script src="js/dependencies/lodash-4.16.4.js"></script>
+    <script src="js/dependencies/debug-socket.js"></script>
+    <style>
+      .hidden { display: none; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="col-sm-12">
+
+        <h1><span class="fa fa-sign-in"></span> Test socket event</h1>
+        <h3>Logged in as: <span style="color: green"><%= user.full_name %></span></h3>
+        <h3>Current subcribed rooms:</h3>
+        <div class="alert alert-warning"><span style="color: red" id="current-room"></span></div>
+
+        <div id="messages-stack">
+          <h3>Response:</h3>
+          <pre id="message-display" class="alert alert-success"></pre>
+        </div>
+
+        <form action="">
+
+          <div class="form-group">
+            <label for="event-name">Event</label>
+            <select class="form-control" id="event-name">
+              <option>/socket/subscribe</option>
+              <option>/socket/unsubscribe</option>
+              <option>/socket/like</option>
+              <option>/socket/comment</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="event-name">Media ID</label>
+            <input type="text" class="form-control" id="media-id">
+          </div>
+
+          <div class="form-group">
+            <label for="event-name">Content</label>
+            <textarea type="text" class="form-control" rows="5" id="content"></textarea>
+          </div>
+
+        </form>
+        <button class="btn btn-warning btn-lg" id="btn-send">Send</button>
+
+      </div>
+    </div>
+
+  </body>
+</html>
