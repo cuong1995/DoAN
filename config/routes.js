@@ -97,6 +97,7 @@ module.exports.routes = {
   'get /locations/:place_id/media/recent': 'LocationController.getMediaOfLocation',
   'post /locations':'LocationController.createLocation',
   'post /locations/updateLocation':'LocationController.updateLocation',
+  'get /location/user/:user_id' : 'LocationController.getLocationOfUser',
 
   //USER CONTROLLER
   'get /users/self':'UserController.self',
@@ -123,8 +124,8 @@ module.exports.routes = {
   'get /tags/:tag_name/media/recent': 'TagController.getRecentMedias',
 
   // SOCKET
-  '/socket/subscribe': 'SocketController.subscribe',
-  '/socket/unsubscribe': 'SocketController.unsubscribe',
+  // '/socket/subscribe': 'SocketController.subscribe',
+  // '/socket/unsubscribe': 'SocketController.unsubscribe',
   '/socket/like': 'LikeController.createLike',
   '/socket/comment': 'CommentController.createComment',
 };

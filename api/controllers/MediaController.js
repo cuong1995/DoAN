@@ -46,7 +46,7 @@ module.exports = {
       caption: ['string'],
       tag_users: ['string'],
       place_id: ['string'],
-	  title_color: ['string']
+	  title: ['string']
     }).validateSync(req.allParams());
     var uploadDir = '/uploads/media';
 
@@ -61,7 +61,7 @@ module.exports = {
     async.auto({
       uploadFiles: function(next) {
         req.file('media').upload({
-          maxBytes: 2500000, // Just for test env. TODO: move to config
+          maxBytes: 10000000, // Just for test env. TODO: move to config
           dirname: require('path').resolve(sails.config.appPath, 'assets' + uploadDir),
         }, function(_err, uploadedFiles) {
           uploadFiles = uploadedFiles;
@@ -105,7 +105,7 @@ module.exports = {
       tag_users: ['string'],
       place_id: ['string'],
       is_comment_off: ['string'],
-	  title_color : ['string']
+	  title: ['string']
     }).validateSync(req.allParams());
 
     if (err) {

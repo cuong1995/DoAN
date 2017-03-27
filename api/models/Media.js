@@ -39,9 +39,8 @@ module.exports = {
       type: 'array',
       required: false,
     },
-	title_color:{
-		type:'string',
-		defaultsTo: '#33ccff'
+	title:{
+		type:'string'
 	},
   }
 };

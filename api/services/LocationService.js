@@ -98,4 +98,21 @@ module.exports = {
       });
     });
   },
+  getLocationOfUser: function(user_id, callback){
+	async.auto({
+		media: function(next){
+			Media.find({user_id : user_id}, next);
+		},
+		location :[ 'media', function(ret, next){
+			//var place_ids = _.map(ret.media, 'place_id');
+			//console.log(place_ids);
+		Location.find({place_id: _.map(ret.media, 'place_id')},next);
+			
+		}],
+	}, function(err, ret) {
+      if (err) {
+        return callback(err);
+      } else  callback(null, ret.location);
+	}
+	)},
 }

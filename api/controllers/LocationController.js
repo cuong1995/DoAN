@@ -109,4 +109,25 @@ module.exports = {
     });
 
   },
+	getLocationOfUser: function (req,res){
+    var [err, params] = new checkit({
+      user_id: ['required', 'string'],
+    }).validateSync(req.allParams());
+    var options = {}
+
+    if (err) {
+      return res.badRequest(err.toString());
+    }
+    var user_id = params.user_id;
+    async.auto({
+      data: function (next) {
+        LocationService.getLocationOfUser(user_id , next);
+      },
+    }, function (err, ret) {
+      if (err) {
+        return res.serverError(err.toString());
+      }
+      return res.ok(ret.data);
+    });
+  },
 }
